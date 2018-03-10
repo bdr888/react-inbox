@@ -2,7 +2,7 @@ import React from 'react';
 
 const Message = ({labels, read, starred, subject}) => {
   return (
-  <div className={ read ? "row message read" : "row message unread" }>
+  <div className={`row message ${read ? "read" : "undread"}`} >
   <div className="col-xs-1">
     <div className="row">
       <div className="col-xs-2">
