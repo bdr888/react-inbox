@@ -8,8 +8,9 @@ const MessageList = ({messages}) => {
       <Message
         key={index}
         labels={message.labels}
-        subject={message.subject}
+        read={message.read}
         starred={message.starred}
+        subject={message.subject}
       />
     ))}
   </div>
