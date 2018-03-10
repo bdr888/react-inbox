@@ -9,7 +9,7 @@ const Message = ({labels, read, starred, subject}) => {
         <input type="checkbox" />
       </div>
       <div className="col-xs-2">
-        <i className={starred ? "star fa fa-star-o" : "star fa fa-star"}> </i>
+        <i className={`star fa ${starred ? "fa-star-o" : "fa-star"}`}> </i>
       </div>
     </div>
   </div>
