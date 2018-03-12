@@ -14,8 +14,8 @@ const Message = ({labels, read, starred, subject}) => {
     </div>
   </div>
   <div className="col-xs-11">
-    {labels.map(label => (
-      <span class="label label-warning">{label}</span>
+    {labels.map(({ index, label }) => (
+      <span class="label label-warning"key={index}>{label}</span>
     ))}
     <a href="#">{subject}</a>
   </div>
