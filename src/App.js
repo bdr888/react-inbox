@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import MessageList from './MessageList';
 import Toolbar from './Toolbar';
@@ -7,6 +7,7 @@ import Toolbar from './Toolbar';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.handleSelected=this.handleSelected.bind(this);
     this.state = {
       messages: [
         {
@@ -71,13 +72,19 @@ class App extends Component {
     }
   }
 
+  handleSelected() {
+    // this.setState({ messages: !read});
+    console.log('handleSelected');
+  }
+
   render() {
     return (
       <div>
-      <Toolbar />
-      <MessageList
-        messages={this.state.messages}
-      />
+        <Toolbar />
+        <MessageList
+          messages={this.state.messages}
+          toggleSelected={this.handleSelected}
+        />
       </div>
     );
   }

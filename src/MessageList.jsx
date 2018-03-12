@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Message from './Message';
 
-const MessageList = ({messages}) => {
+const MessageList = ({messages, toggleSelected}) => {
   return (
   <div> 
     {messages.map((message, index) => (
@@ -11,6 +11,7 @@ const MessageList = ({messages}) => {
         read={message.read}
         starred={message.starred}
         subject={message.subject}
+        toggleSelected={toggleSelected}
       />
     ))}
   </div>
