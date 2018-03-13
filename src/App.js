@@ -8,6 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleSelected=this.handleSelected.bind(this);
+    this.handleStarred=this.handleStarred.bind(this);
     this.state = {
       messages: [
         {
@@ -15,7 +16,7 @@ class App extends Component {
           "subject": "You can't input the protocol without calculating the mobile RSS protocol!",
           "read": false,
           "starred": true,
-          "labels": ["dev", "personal"]
+          "labels": ["dev", "personal"],
         },
         {
           "id": 2,
@@ -72,9 +73,20 @@ class App extends Component {
     }
   }
 
-  handleSelected() {
-    // this.setState({ messages: !read});
-    console.log('handleSelected');
+  handleSelected(id, e) {
+    this.setState(({messages}) => (
+        messages.map(message => {
+          if (message.id === id)
+          message.selected = !message.selected }))
+    );
+  }
+
+  handleStarred(id, e) {
+    this.setState(({messages}) => (
+        messages.map(message => {
+          if (message.id === id)
+          message.starred = !message.starred }))
+    );
   }
 
   render() {
@@ -84,6 +96,7 @@ class App extends Component {
         <MessageList
           messages={this.state.messages}
           toggleSelected={this.handleSelected}
+          toggleStarred={this.handleStarred}
         />
       </div>
     );
