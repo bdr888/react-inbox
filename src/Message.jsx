@@ -5,7 +5,7 @@ const Message = ({selected, labels, read, starred, subject, toggleSelected, togg
   <div className={`
       row
       message
-      ${read ? "read" : "undread"}
+      ${read ? "read" : "unread"}
       ${selected ? "selected" : null}
     `} >
   <div className="col-xs-1">
