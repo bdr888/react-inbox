@@ -7,6 +7,8 @@ import Toolbar from "./Toolbar";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.addLabel = this.addLabel.bind(this);
+    // this.removeLabel = this.removeLabel.bind(this);
     this.handleRead = this.handleRead.bind(this);
     this.handleSelected = this.handleSelected.bind(this);
     this.handleStarred = this.handleStarred.bind(this);
@@ -17,8 +19,9 @@ class App extends Component {
           subject:
             "You can't input the protocol without calculating the mobile RSS protocol!",
           read: false,
+          selected: true,
           starred: true,
-          labels: ["dev", "personal"]
+          labels: []
         },
         {
           id: 2,
@@ -26,7 +29,6 @@ class App extends Component {
             "connecting the system won't do anything, we need to input the mobile AI panel!",
           read: false,
           starred: false,
-          selected: true,
           labels: []
         },
         {
@@ -42,7 +44,6 @@ class App extends Component {
           subject: "We need to program the primary TCP hard drive!",
           read: true,
           starred: false,
-          selected: true,
           labels: []
         },
         {
@@ -112,10 +113,24 @@ class App extends Component {
     }))
   }
 
+  addLabel(event) {
+    console.log(event.target.value);
+    this.setState(prevState => ({
+      messages: prevState.messages.map(
+        ( message, event ) =>
+          message.selected
+          ? { ...message, labels: labels.push(event.target.value) }
+          : message
+      )
+    }))
+  }
+
   render() {
     return (
       <div>
         <Toolbar
+          addLabel={this.addLabel}
+          removeLabel={this.removeLabel}
           toggleRead={this.handleRead}
         />
         <MessageList

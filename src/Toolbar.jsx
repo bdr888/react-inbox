@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Toolbar = ({toggleRead}) => (
+const Toolbar = ({addLabel, removeLabel, toggleRead}) => (
   <div className="row toolbar">
     <div className="col-md-12">
       <p className="pull-right">
@@ -20,14 +20,14 @@ const Toolbar = ({toggleRead}) => (
         Mark As Unread
       </button>
 
-      <select className="form-control label-select">
+      <select className="form-control label-select" onChange={ (event) => addLabel(event)}>
         <option>Apply label</option>
         <option value="dev">dev</option>
         <option value="personal">personal</option>
         <option value="gschool">gschool</option>
       </select>
 
-      <select className="form-control label-select">
+      <select className="form-control label-select" onChange={ (e) => removeLabel(e.target.value)}>
         <option>Remove label</option>
         <option value="dev">dev</option>
         <option value="personal">personal</option>
