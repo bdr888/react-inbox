@@ -114,12 +114,12 @@ class App extends Component {
   }
 
   addLabel(event) {
-    console.log(event.target.value);
+    const newLabel = event.target.value
     this.setState(prevState => ({
       messages: prevState.messages.map(
-        ( message, event ) =>
+        message =>
           message.selected
-          ? { ...message, labels: labels.push(event.target.value) }
+          ? { ...message, labels: [newLabel] }
           : message
       )
     }))
