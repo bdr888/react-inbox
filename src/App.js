@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import logo from './logo.svg';
-import "./App.css";
-import MessageList from "./MessageList";
-import Toolbar from "./Toolbar";
+import './App.css';
+import MessageList from './MessageList';
+import Toolbar from './Toolbar';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends Component {
           read: false,
           selected: true,
           starred: true,
-          labels: []
+          labels: [],
         },
         {
           id: 2,
@@ -29,54 +29,54 @@ class App extends Component {
             "connecting the system won't do anything, we need to input the mobile AI panel!",
           read: false,
           starred: false,
-          labels: []
+          labels: [],
         },
         {
           id: 3,
           subject:
-            "Use the 1080p HTTP feed, then you can parse the cross-platform hard drive!",
+            'Use the 1080p HTTP feed, then you can parse the cross-platform hard drive!',
           read: false,
           starred: true,
-          labels: ["dev"]
+          labels: ['dev'],
         },
         {
           id: 4,
-          subject: "We need to program the primary TCP hard drive!",
+          subject: 'We need to program the primary TCP hard drive!',
           read: true,
           starred: false,
-          labels: []
+          labels: [],
         },
         {
           id: 5,
           subject:
-            "If we override the interface, we can get to the HTTP feed through the virtual EXE interface!",
+            'If we override the interface, we can get to the HTTP feed through the virtual EXE interface!',
           read: false,
           starred: false,
-          labels: ["personal"]
+          labels: ['personal'],
         },
         {
           id: 6,
-          subject: "We need to back up the wireless GB driver!",
+          subject: 'We need to back up the wireless GB driver!',
           read: true,
           starred: true,
-          labels: []
+          labels: [],
         },
         {
           id: 7,
-          subject: "We need to index the mobile PCI bus!",
+          subject: 'We need to index the mobile PCI bus!',
           read: true,
           starred: false,
-          labels: ["dev", "personal"]
+          labels: ['dev', 'personal'],
         },
         {
           id: 8,
           subject:
-            "If we connect the sensor, we can get to the HDD port through the redundant IB firewall!",
+            'If we connect the sensor, we can get to the HDD port through the redundant IB firewall!',
           read: true,
           starred: true,
-          labels: []
-        }
-      ]
+          labels: [],
+        },
+      ],
     };
   }
 
@@ -86,44 +86,52 @@ class App extends Component {
         message =>
           message.id === id
             ? { ...message, selected: !message.selected }
-            : message
-      )
+            : message,
+      ),
     }));
   }
-  
+
   handleStarred(id, e) {
     this.setState(prevState => ({
       messages: prevState.messages.map(
         message =>
           message.id === id
             ? { ...message, starred: !message.starred }
-            : message
-      )
+            : message,
+      ),
     }));
   }
 
   handleRead(bool) {
     this.setState(prevState => ({
       messages: prevState.messages.map(
-        message =>
-          message.selected
-          ? { ...message, read: bool }
-          : message
-      )
-    }))
+        message => (message.selected ? { ...message, read: bool } : message),
+      ),
+    }));
   }
 
-  addLabel(event) {
-    console.log(event.target.value);
+  addLabel = event => {
+    const newLabel = event.target.value;
+    console.log(newLabel);
     this.setState(prevState => ({
       messages: prevState.messages.map(
-        ( message, event ) =>
-          message.selected
-          ? { ...message, labels: labels.push(event.target.value) }
-          : message
-      )
-    }))
-  }
+        message =>
+          message.selected ? { ...message, labels: newLabel } : message,
+      ),
+    }));
+  };
+
+  // removeLabel = (event) => {
+  //   const newLabel = event.target.value;
+  //   this.setState(prevState => ({
+  //     messages: prevState.messages.map(
+  //       message =>
+  //         message.selected
+  //         ? { ...message, labels: [newLabel] }
+  //         : message
+  //     )
+  //   }))
+  // }
 
   render() {
     return (
